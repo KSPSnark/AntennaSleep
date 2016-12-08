@@ -73,6 +73,7 @@ namespace AntennaSleep
         /// </summary>
         void Update()
         {
+            if (deployable == null) return;
             currentState.Update();
             bool isOverdue = currentState.IsOverdue;
             if (isOverdue || !currentState.IsSameState(lastState))
@@ -102,7 +103,7 @@ namespace AntennaSleep
         /// </summary>
         private bool IsSleeping
         {
-            get { return wakeTime > NOT_SLEEPING; }
+            get { return (deployable != null) && (wakeTime > NOT_SLEEPING); }
         }
 
         /// <summary>
@@ -292,7 +293,7 @@ namespace AntennaSleep
             public void Update()
             {
                 hasDeployable = (module.deployable != null);
-                canMove = module.deployable.CanMove;
+                canMove = hasDeployable ? module.deployable.CanMove : false;
                 isEditor = HighLogic.LoadedSceneIsEditor;
                 isFlight = HighLogic.LoadedSceneIsFlight;
                 isSleeping = module.IsSleeping;

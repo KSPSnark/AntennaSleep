@@ -1,3 +1,7 @@
-Version 1.0  (CURRENT VERSION)
-* Initial release.
+Version 1.0.1  (CURRENT VERSION)
+* Fix bug that causes NullReferenceException log spam if ModuleDeployableSleep can't find ModuleDeployablePart.
+* Update to ModuleManager version 2.7.5.
 
+
+Version 1.0  (2016-10-11)
+* Initial release.
